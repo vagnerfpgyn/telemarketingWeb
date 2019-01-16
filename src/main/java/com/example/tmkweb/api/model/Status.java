@@ -14,20 +14,20 @@ public class Status {
 	
 		@Id
 		@GeneratedValue (strategy = GenerationType.IDENTITY)
-		private Long id_status ;
+		private long id_status ;
 		
 		@NotNull
 		@Size(min=3, max=20)
-		private String nome_status;
-		
-		
+		private String nome_status;		
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + ((id_status == null) ? 0 : id_status.hashCode());
+			result = prime * result + (int) (id_status ^ (id_status >>> 32));
 			return result;
 		}
+
 		@Override
 		public boolean equals(Object obj) {
 			if (this == obj)
@@ -37,26 +37,24 @@ public class Status {
 			if (getClass() != obj.getClass())
 				return false;
 			Status other = (Status) obj;
-			if (id_status == null) {
-				if (other.id_status != null)
-					return false;
-			} else if (!id_status.equals(other.id_status))
+			if (id_status != other.id_status)
 				return false;
 			return true;
 		}
-		public Long getId_status() {
+
+		public long getId_status() {
 			return id_status;
 		}
-		public void setId_status(Long id_status) {
+
+		public void setId_status(long id_status) {
 			this.id_status = id_status;
 		}
+
 		public String getNome_status() {
 			return nome_status;
 		}
+
 		public void setNome_status(String nome_status) {
 			this.nome_status = nome_status;
-		}
-		
-		
-		
+		}		
 }
